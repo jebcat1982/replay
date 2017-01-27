@@ -13,24 +13,24 @@
 
 ActiveRecord::Schema.define(version: 20130519155842) do
 
-  create_table "likes", force: true do |t|
-    t.integer  "user_id"
-    t.string   "song_path"
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "song_path",  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "song_plays", force: true do |t|
-    t.integer  "user_id"
-    t.string   "song_path"
+  create_table "song_plays", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "song_path",  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
-    t.string "login"
-    t.string "email"
-    t.string "token"
+  create_table "users", force: :cascade do |t|
+    t.string "login", limit: 255
+    t.string "email", limit: 255
+    t.string "token", limit: 255
   end
 
 end

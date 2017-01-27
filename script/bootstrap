@@ -35,14 +35,13 @@ if test -f "config/play.yml"
 then
   success 'play config loaded'
 else
-  user "Are you going to use Play within a GitHub organization? (y,n) › "
-  read -n 1 use_gh_org
+  echo ""
+  echo ""
+  echo "    Play is designed to integrate with GitHub!"
+  echo ""
 
-  if [ "$use_gh_org" == "y" ]
-  then
-    user "What's your GitHub organization name? › "
-    read gh_org
-  fi
+  user "What's your GitHub organization name? › "
+  read gh_org
 
   echo ""
   echo ""
@@ -192,7 +191,7 @@ else
 fi
 
 info 'data migrations'
-if bundle exec rake db:migrate >> /tmp/play-bootstrap 2>&1
+if bundle exec rake db:create db:migrate >> /tmp/play-bootstrap 2>&1
 then
   success 'data migrated'
 else

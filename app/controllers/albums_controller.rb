@@ -1,7 +1,7 @@
 class AlbumsController < ApplicationController
   def show
     @artist = Artist.new(:name => params[:artist_name])
-    @album  = Album.new(:artist => @artist, :name => params[:name])
+    @album  = Album.new(:artist => @artist, :name => "The Good Life")
     @songs  = @album.songs
   end
 
